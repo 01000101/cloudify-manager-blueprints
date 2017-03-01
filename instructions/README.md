@@ -66,7 +66,7 @@ Now let's push the package to the Manager and get it in the right spot for boots
 
 ```bash
 # Download the Manager Resources package
-curl -o cloudify-manager-resources.tar.gz \
+curl -L -o cloudify-manager-resources.tar.gz \
 	http://repository.cloudifysource.org/org/cloudify3/3.4.2/sp-RELEASE/cloudify-manager-resources_3.4.2-sp-b420.tar.gz
 # Upload the package to the Manager via SCP and put it in /tmp/
 scp -i [PATH-TO-MANAGER-PRIVATE-KEY] \
@@ -105,7 +105,7 @@ cd cloudify-manager-blueprints
 git checkout tags/3.4.2
 
 # Using cURL
-curl -o cloudify-manager-blueprints.zip \
+curl -L -o cloudify-manager-blueprints.zip \
 	https://github.com/cloudify-cosmo/cloudify-manager-blueprints/archive/3.4.2.zip
 unzip cloudify-manager-blueprints.zip
 rm cloudify-manager-blueprints.zip
@@ -172,13 +172,19 @@ Enter your working directory. Do you remember that `offline/` folder we created 
 # Create a root for all getcloudify.org plugins
 mkdir -p offline/imports/cloudify/
 # Import the standard Cloudify types
-curl -O http://www.getcloudify.org/spec/cloudify/3.4.2/types.yaml
+curl -L -O http://www.getcloudify.org/spec/cloudify/3.4.2/types.yaml
 mkdir -p offline/imports/cloudify/spec/cloudify/3.4.2/
 mv types.yaml offline/imports/cloudify/spec/cloudify/3.4.2/
 # Import the Fabric plugin types
-curl -O http://www.getcloudify.org/spec/fabric-plugin/1.4.1/plugin.yaml
+curl -L -O http://www.getcloudify.org/spec/fabric-plugin/1.4.1/plugin.yaml
 mkdir -p offline/imports/cloudify/spec/fabric-plugin/1.4.1/
 mv plugin.yaml offline/imports/cloudify/spec/fabric-plugin/1.4.1/
+```
+
+Now we need to install (in our virtualenv) the required plugins (only Fabric, in this case). 
+
+```bash
+pip install https://github.com/cloudify-cosmo/cloudify-fabric-plugin/archive/1.4.1.zip
 ```
 
 ### Extend the Import Resolver
