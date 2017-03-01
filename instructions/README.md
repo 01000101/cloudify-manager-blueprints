@@ -51,6 +51,13 @@ Make sure it has a public IP and it should have 4GB+ of memory and 10GB+ of stor
 the Security Group from the last section for this instance. If you haven't already, you'll
 need to create (or reuse) a Key Pair for the instance for SSH access.
 
+**AWS Security Group quirk**
+
+You will need to allow your manager to talk with itself over the public IP. To do this, you need 
+to modify your Security Group from earlier and add a new Outbound TCP/80 rule to [YOUR-MANAGER-PUBLIC-IP]/32. 
+
+This is likely a problem with Cloudify not using the private IP when it should be, but this is a quick workaround.
+
 ### Download the Manager Resources package
 
 The only prep work we need to do on this instance is to download a package of
