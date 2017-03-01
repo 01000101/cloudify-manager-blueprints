@@ -4,8 +4,8 @@
 
 ### Before you begin...
 
-1) Read [Working Offline with Cloudify 3.4](http://getcloudify.org/2017/02/15/working-offline-cloudify.html)
-2) Read that again... We're not joking.
+* Read [Working Offline with Cloudify 3.4](http://getcloudify.org/2017/02/15/working-offline-cloudify.html)
+* Read that again... We're not joking.
 
 
 ### General information
